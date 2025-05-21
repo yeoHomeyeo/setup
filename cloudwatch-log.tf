@@ -1,7 +1,7 @@
 # Create CloudWatch Log Group
 resource "aws_cloudwatch_log_group" "ce-grp-2-vpc_flow_logs" {
   name              = "/aws/vpc/${aws_vpc.ce-grp-2-vpc.id}/flow-logs"
-  retention_in_days = 30  # Adjust retention as needed (1-3653)
+  retention_in_days = 30 # Adjust retention as needed (1-3653)
 
   tags = {
     Name = "${local.env}-ce-grp-2-vpc-flow-logs"
@@ -34,8 +34,8 @@ resource "aws_iam_role_policy" "ce-grp-2-vpc_flow_log_policy" {
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
-      Effect   = "Allow",
-      Action   = [
+      Effect = "Allow",
+      Action = [
         "logs:CreateLogStream",
         "logs:PutLogEvents",
         "logs:DescribeLogGroups",
