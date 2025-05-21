@@ -66,10 +66,3 @@ resource "aws_route_table_association" "ce-grp-2-public_zone2" {
   subnet_id      = aws_subnet.ce-grp-2-public_zone2.id
   route_table_id = aws_route_table.ce-grp-2-public.id
 }
-
-resource "aws_flow_log" "vpc_flow_log" {
-  log_group_name = "/aws/vpc/${aws_vpc.ce-grp-2-vpc.id}"
-  vpc_id         = aws_vpc.ce-grp-2-vpc.id
-  traffic_type   = "ALL"
-  iam_role_arn   = aws_iam_role.vpc_flow_log_role.arn
-}
