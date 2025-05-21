@@ -31,20 +31,10 @@ jobs:
       with:
         terraform_version: ${{ env.TERRAFORM_VERSION }}
 
+# Checks code before applying
+
     - name: Terraform fmt
       run: terraform fmt -check
-
-    - name: Terraform Init
-      run: terraform init
-       
-    - name: Terraform Validate
-      run: terraform validate
-      
-    - name: Terraform Plan
-      run: terraform plan
-
-    - name: Terraform Apply
-      run: terraform apply -auto-approve
 
     - uses: terraform-linters/setup-tflint@v3
       with:
@@ -63,4 +53,18 @@ jobs:
       uses: bridgecrewio/checkov-action@master
       with:
         framework: terraform
+
+    - name: Terraform Init
+      run: terraform init
+       
+    - name: Terraform Validate
+      run: terraform validate
+      
+    - name: Terraform Plan
+      run: terraform plan
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
+   
 
