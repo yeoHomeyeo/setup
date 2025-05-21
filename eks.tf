@@ -44,3 +44,25 @@ resource "aws_eks_cluster" "ce-grp-2-eks" {
 
   depends_on = [aws_iam_role_policy_attachment.ce-grp-2-eks]
 }
+
+resource "aws_eks_addon" "ce-grp-2-vpc_cni" {
+  cluster_name = aws_eks_cluster.ce-grp-2-eks.name
+  addon_name   = "vpc-cni"
+}
+
+resource "aws_eks_addon" "ce-grp-2-coredns" {
+  cluster_name = aws_eks_cluster.ce-grp-2-eks.name
+  addon_name   = "coredns"
+}
+
+resource "aws_eks_addon" "ce-grp-2-kube_proxy" {
+  cluster_name = aws_eks_cluster.ce-grp-2-eks.name
+  addon_name   = "kube-proxy"
+}
+
+resource "aws_eks_addon" "ce-grp-2-eks_pod_identity" {
+  cluster_name = aws_eks_cluster.ce-grp-2-eks.name
+  addon_name   = "eks-pod-identity-agent"
+}
+
+
